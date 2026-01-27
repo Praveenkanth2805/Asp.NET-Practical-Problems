@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Implement the Html Controls</title>
+    <title>Implement the Server Controls</title>
     
 </head>
 <style type="text/css">
@@ -43,7 +43,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    <h1 runat=server>Implement the Html Controls</h1>
+    <h1 runat=server>Implement the Server Controls</h1>
     <br />
     <h2>Student Registration Form</h2>
         <table class="style1">
