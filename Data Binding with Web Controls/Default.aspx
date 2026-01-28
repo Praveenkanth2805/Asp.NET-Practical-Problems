@@ -4,26 +4,110 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Data Binding with Web Controls</title>
+    <title>Data Binding With Web Controls</title>
+    
 </head>
-<style>
-    #form1
+<style type="text/css">
+    #form1{ text-align:center;}
+    .style1
     {
-        text-align:center;
-        }
+        width: 100%;
+        margin-left: 321px;
+    }
+    .style2
+    {
+        width: 326px;
+    }
+    #Select1
+    {
+        width: 178px;
+    }
+    #Text1
+    {
+        width: 177px;
+    }
+    #Text2
+    {
+        width: 176px;
+    }
+    #Password1
+    {
+        width: 172px;
+    }
+    #TextArea1
+    {
+        height: 176px;
+        width: 435px;
+    }
 </style>
 <body>
     <form id="form1" runat="server">
     <div>
-    <h1 runat=server>Data Binding with Web Controls</h1>
+    <h1 runat=server>Data Binding With Web Controls</h1>
+    <br />
+    <h2>Student Registration Form</h2>
+        <table class="style1">
+            <tr>
+                <td class="style2">
+                    Student Name:</td>
+                <td align="left">
+                    <asp:TextBox ID="name" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="style2">
+                    Gender:</td>
+                <td align="left">
+                    <asp:RadioButtonList ID="gender" runat="server">
+                        <asp:ListItem>Male</asp:ListItem>
+                        <asp:ListItem>Female</asp:ListItem>
+                    </asp:RadioButtonList>
+                </td>
+            </tr>
+            <tr>
+                <td class="style2">
+                    Address:</td>
+                <td align="left">
+                    <asp:TextBox ID="address" runat="server" TextMode="MultiLine"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="style2">
+                    Course:</td>
+                <td align="left">
+                    <asp:DropDownList ID="course" runat="server" Width="126px" >
+                     
+                    </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td class="style2">
+                    &nbsp;</td>
+                <td align="left">
+                    <asp:CheckBox ID="havelap" runat="server" Text="Have Laptop" />
+                </td>
+            </tr>
+            <tr>
+                <td class="style2">
+                    Username:</td>
+                <td align="left">
+                    <asp:TextBox ID="uname" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="style2">
+                    Password:</td>
+                <td align="left">
+                    <asp:TextBox ID="pass" runat="server" TextMode="Password"></asp:TextBox>
+                </td>
+            </tr>
+        </table>
+        <br />
+        &nbsp;<asp:Button ID="Button1" runat="server"  Text="Submit" />
+        <br />
+        <br />
     </div>
-    
-    <asp:DropDownList ID="StudentList" runat="server" Height="16px">
-    </asp:DropDownList><br /><br />
-    <asp:Label ID="Name" runat="server" Text="Label"></asp:Label><br /><br />
-    <asp:TextBox ID="Mark" runat="server" ></asp:TextBox>
-    
-
+    <asp:Label ID="Label1" runat="server" Text="Label" Visible=false></asp:Label>
     </form>
 </body>
 </html>

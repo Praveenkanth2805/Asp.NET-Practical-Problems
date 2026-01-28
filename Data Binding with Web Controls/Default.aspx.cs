@@ -18,24 +18,19 @@ public partial class _Default : System.Web.UI.Page
             string constr = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + dbpath + "; Persist Security info=false";
 
             OleDbConnection con = new OleDbConnection(constr);
-
-            OleDbCommand cmd = new OleDbCommand("Select * from studentMarks", con);
             con.Open();
-            OleDbDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                Name.Text = dr["sname"].ToString();
-                Mark.Text = dr["Total"].ToString();
-            }
-            dr.Close();
-            OleDbDataAdapter da = new OleDbDataAdapter("Select * from studentMarks",con);
+            OleDbDataAdapter da = new OleDbDataAdapter("Select * from course",con);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            StudentList.DataSource = dt;
-            StudentList.DataTextField = "Sname";
-            StudentList.DataBind();
+            course.DataSource = dt;
+            course.DataTextField = "Course_Name";
+            course.DataBind();
             con.Close();
         }
     }
-    
+
+    protected void StudentList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
