@@ -83,4 +83,8 @@ public partial class _Default : System.Web.UI.Page
         Button3.Visible = false;
         Button2.Visible = true;
     }
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

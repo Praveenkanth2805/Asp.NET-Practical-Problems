@@ -53,7 +53,7 @@ delete operations</h1>
     <br />
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
         DataKeyNames="EmpId" DataSourceID="AccessDataSource1" 
-        style="margin-left: 372px" AllowPaging="True">
+        style="margin-left: 458px" AllowPaging="True">
         <Columns>
             <asp:BoundField DataField="EmpId" HeaderText="EmpId" ReadOnly="True" 
                 SortExpression="EmpId" />
