@@ -12,7 +12,7 @@
     {
         width: 52%;
         margin-right: 0px;
-        margin-left: 356px;
+        margin-left: 390px;
     }
     .style2
     {
@@ -70,8 +70,7 @@
                     <asp:Label ID="Label2" runat="server" Text="Gender:"></asp:Label>
                 </td>
                 <td class="style6" align="center">
-                    <asp:RadioButtonList ID="gender" runat="server" 
-                        onselectedindexchanged="gender_SelectedIndexChanged">
+                    <asp:RadioButtonList ID="gender" runat="server" >
                         <asp:ListItem>Male</asp:ListItem>
                         <asp:ListItem>Female</asp:ListItem>
                     </asp:RadioButtonList>
@@ -86,14 +85,26 @@
                     <asp:Label ID="Label3" runat="server" Text="From:"></asp:Label>
                 </td>
                 <td align="center" class="style7">
-                    <asp:DropDownList ID="from" runat="server" DataSourceID="AccessDataSource1" 
-                        DataTextField="Place" DataValueField="Place">
+                    <asp:DropDownList ID="from" runat="server" AutoPostBack="True" 
+                        DataSourceID="AccessDataSource1" DataTextField="from" DataValueField="from" >
                     </asp:DropDownList>
                     <asp:AccessDataSource ID="AccessDataSource1" runat="server" 
-                        DataFile="~/train_reserve.accdb" 
-                        SelectCommand="SELECT [Place] FROM [place_tablle]"></asp:AccessDataSource>
+                        DataFile="~/train_reserve.accdb" SelectCommand="SELECT [from] FROM [reserve]">
+                    </asp:AccessDataSource>
+&nbsp;</td>
+                <td rowspan="2">
+                    <asp:Label ID="Label8" runat="server" Text="Count:"></asp:Label>
+                    <asp:DropDownList ID="fcount" runat="server" AutoPostBack="True" 
+                        onselectedindexchanged="to_SelectedIndexChanged">
+                        <asp:ListItem>1</asp:ListItem>
+                        <asp:ListItem>2</asp:ListItem>
+                        <asp:ListItem>3</asp:ListItem>
+                        <asp:ListItem>4</asp:ListItem>
+                        <asp:ListItem>5</asp:ListItem>
+                        <asp:ListItem>6</asp:ListItem>
+                    </asp:DropDownList>
                 </td>
-                <td align="center" class="style9" rowspan="2">
+                <td align="center" class="style9" rowspan="3">
                     <asp:CompareValidator ID="CompareValidator1" runat="server" 
                         ControlToCompare="from" ControlToValidate="to" 
                         ErrorMessage="Place Must Be Not Same" ForeColor="Red" Operator="NotEqual"></asp:CompareValidator>
@@ -104,12 +115,21 @@
                     <asp:Label ID="Label4" runat="server" Text="To:"></asp:Label>
                 </td>
                 <td align="center" class="style7">
-                    <asp:DropDownList ID="to" runat="server" DataSourceID="AccessDataSource2" 
-                        DataTextField="Place" DataValueField="Place">
+                    <asp:DropDownList ID="to" runat="server" AutoPostBack="True" 
+                        DataSourceID="AccessDataSource2" DataTextField="to" DataValueField="to" 
+                        onselectedindexchanged="to_SelectedIndexChanged">
                     </asp:DropDownList>
                     <asp:AccessDataSource ID="AccessDataSource2" runat="server" 
-                        DataFile="~/train_reserve.accdb" 
-                        SelectCommand="SELECT [Place] FROM [place_tablle]"></asp:AccessDataSource>
+                        DataFile="~/train_reserve.accdb" SelectCommand="SELECT [to] FROM [reserve]">
+                    </asp:AccessDataSource>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" class="style5">
+                    <asp:Label ID="Label7" runat="server" Text="Fare:"></asp:Label>
+                </td>
+                <td align="center" class="style7">
+                    <asp:Label ID="fare" runat="server" Text="0"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -117,19 +137,7 @@
                     <asp:Label ID="Label6" runat="server" Text="Date:"></asp:Label>
                 </td>
                 <td align="center" class="style7">
-                    <asp:Calendar ID="Calendar1" runat="server" BackColor="#FFFFCC" 
-                        BorderColor="#FFCC66" BorderWidth="1px" DayNameFormat="Shortest" 
-                        Font-Names="Verdana" Font-Size="8pt" ForeColor="#663399" Height="200px" 
-                        ShowGridLines="True" Width="220px">
-                        <DayHeaderStyle BackColor="#FFCC66" Font-Bold="True" Height="1px" />
-                        <NextPrevStyle Font-Size="9pt" ForeColor="#FFFFCC" />
-                        <OtherMonthDayStyle ForeColor="#CC9966" />
-                        <SelectedDayStyle BackColor="#66FF33" Font-Bold="True" />
-                        <SelectorStyle BackColor="#FFCC66" />
-                        <TitleStyle BackColor="#990000" Font-Bold="True" Font-Size="9pt" 
-                            ForeColor="#FFFFCC" />
-                        <TodayDayStyle BackColor="#FFCC66" ForeColor="White" />
-                    </asp:Calendar>
+                    <asp:TextBox ID="rdate" type=date runat="server"></asp:TextBox>
                     
                 </td>
                 <td align="center" class="style9">
@@ -138,7 +146,7 @@
             <tr>
                 <td align="center" class="style2" colspan="3">
                     <asp:Button ID="Button1" runat="server" Text="Book a Ticket" 
-                        onclick="Button1_Click" />
+                        onclick="Btn_click" />
                     
                 </td>
             </tr>

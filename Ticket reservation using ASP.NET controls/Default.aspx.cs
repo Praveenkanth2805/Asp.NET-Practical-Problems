@@ -4,79 +4,48 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.OleDb;
 
 public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
-        {
-            Calendar1.SelectedDate = DateTime.Today;
-            Calendar1.VisibleDate = DateTime.Today;
-        }
-    }
-
-    protected void Button1_Click(object sender, EventArgs e)
-    {
        
-        if (from.SelectedValue == "Chennai")
-        {
-            if (to.SelectedValue == "Madurai")
-            {
-                bill.Text = "Name: " + name.Text + "</br>" +
-                    "Gender:" + gender.SelectedValue + "</br>" +
-                    "From: Chennai <br> To: Madurai  <br> Price:350 <br>"
-                     +"Date & Time: " + Calendar1.SelectedDate.ToShortDateString() + DateTime.Now.ToString();
-                bill.Visible = true;
-                book.Visible = true;
-            }
-            if (to.SelectedValue == "Coimbatore")
-            {
-                bill.Text = "Name: " + name.Text +
-                    "<br> Gender:" + gender.SelectedValue + "<br>" +
-                    "From: Chennai <br> To: Coimbatore  <br>Price:450 <br>"
-                + "Date & Time: " + Calendar1.SelectedDate.ToShortDateString() + DateTime.Now.ToString();
-                bill.Visible = true;
-                book.Visible = true;
-            }
-            if (to.SelectedValue == "Salem")
-            {
-                bill.Text = "Name: " + name.Text +
-                    "<br> Gender:" + gender.SelectedValue + "<br>" +
-                    "From: Chennai <br> To: Salem  <br>Price:500 <br>"
-                + "Date & Time: " + Calendar1.SelectedDate.ToShortDateString()+DateTime.Now.ToString();
-                bill.Visible = true;
-                book.Visible = true;
-            }
-            if (to.SelectedValue == "Trichy")
-            {
-                bill.Text = "Name: " + name.Text + "<br>" +
-                    "Gender:" + gender.SelectedValue + "<br>" +
-                    "From: Chennai <br> To: Trichy <br>  Price:250 <br>" +
-                    "Date & Time: " + Calendar1.SelectedDate.ToShortDateString() + DateTime.Now.ToString();
-                bill.Visible = true;
-                book.Visible = true;
-            }
-            if (to.SelectedValue == "Villupram")
-            {
-                bill.Text = "Name: " + name.Text +"<br>"+
-                    "Gender:" + gender.SelectedValue + "<br>" +
-                    "From: Chennai <br> To: Madurai  <br> Price:150 <br>"+
-                    "Date & Time: " + Calendar1.SelectedDate.ToShortDateString() + DateTime.Now.ToString();
-                bill.Visible = true;
-                book.Visible = true;
-            }
-            if (to.SelectedValue == "Chennai")
-            {
-                bill.Text = "Place is Same So enter correct Place";
-                bill.Visible = true;
-                book.Visible = true;
-            }
-        }
     }
-
-    protected void gender_SelectedIndexChanged(object sender, EventArgs e)
+   
+    protected void Btn_click(object sender, EventArgs e)
     {
-
+        bill.Text = "Name: " + name.Text + "<br>" +
+                  "Gender:" + gender.SelectedValue + "<br>" +
+                  "From: " + from.SelectedValue + "<br>" +
+                   "To:" + to.SelectedValue + "<br>" +
+                  "Date: " + rdate.Text + " <br>" +
+                  "booked Time:"+DateTime.Now.ToString("hh:mm:ss tt");
+        bill.Visible = true;
+        book.Visible = true;
     }
+   
+    protected void to_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string path = Server.MapPath("~/train_reserve.accdb");
+        string spath = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + path;
+        OleDbConnection con = new OleDbConnection(spath);
+        con.Open();
+        string qu = "SELECT fare FROM reserve WHERE from=? and to=?";
+        OleDbCommand cmd = new OleDbCommand(qu, con);
+        cmd.Parameters.AddWithValue("?", from.SelectedValue);
+        cmd.Parameters.AddWithValue("?", to.SelectedValue);
+        cmd.ExecuteNonQuery();
+
+        object res = cmd.ExecuteScalar();
+        con.Close();
+        fare.Text = res.ToString();
+
+        string cfare = res.ToString();
+        int f = int.Parse(cfare);
+        int c = int.Parse(fcount.SelectedValue);
+        fare.Text = (f * c).ToString();
+    }
+   
 }
