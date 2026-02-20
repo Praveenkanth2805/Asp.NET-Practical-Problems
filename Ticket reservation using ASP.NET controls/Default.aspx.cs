@@ -74,5 +74,9 @@ public partial class _Default : System.Web.UI.Page
             }
         }
     }
-   
+
+    protected void gender_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
