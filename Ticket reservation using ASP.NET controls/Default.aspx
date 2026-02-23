@@ -86,10 +86,11 @@
                 </td>
                 <td align="center" class="style7">
                     <asp:DropDownList ID="from" runat="server" AutoPostBack="True" 
-                        DataSourceID="AccessDataSource1" DataTextField="from" DataValueField="from" >
+                        DataSourceID="AccessDataSource1" DataTextField="from" DataValueField="from" onselectedindexchanged="to_SelectedIndexChanged">
                     </asp:DropDownList>
                     <asp:AccessDataSource ID="AccessDataSource1" runat="server" 
-                        DataFile="~/train_reserve.accdb" SelectCommand="SELECT [from] FROM [reserve]">
+                        DataFile="~/train_reserve.accdb" 
+                        SelectCommand="SELECT DISTINCT [from] FROM [reserve]">
                     </asp:AccessDataSource>
 &nbsp;</td>
                 <td rowspan="2">
@@ -104,11 +105,6 @@
                         <asp:ListItem>6</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td align="center" class="style9" rowspan="3">
-                    <asp:CompareValidator ID="CompareValidator1" runat="server" 
-                        ControlToCompare="from" ControlToValidate="to" 
-                        ErrorMessage="Place Must Be Not Same" ForeColor="Red" Operator="NotEqual"></asp:CompareValidator>
-                </td>
             </tr>
             <tr>
                 <td align="right" class="style5">
@@ -120,7 +116,8 @@
                         onselectedindexchanged="to_SelectedIndexChanged">
                     </asp:DropDownList>
                     <asp:AccessDataSource ID="AccessDataSource2" runat="server" 
-                        DataFile="~/train_reserve.accdb" SelectCommand="SELECT [to] FROM [reserve]">
+                        DataFile="~/train_reserve.accdb" 
+                        SelectCommand="SELECT DISTINCT [to] FROM [reserve]">
                     </asp:AccessDataSource>
                 </td>
             </tr>

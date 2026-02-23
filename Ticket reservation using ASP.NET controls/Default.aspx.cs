@@ -40,12 +40,19 @@ public partial class _Default : System.Web.UI.Page
 
         object res = cmd.ExecuteScalar();
         con.Close();
-        fare.Text = res.ToString();
+        if (res != null)
+        {
+            fare.Text = res.ToString();
 
-        string cfare = res.ToString();
-        int f = int.Parse(cfare);
-        int c = int.Parse(fcount.SelectedValue);
-        fare.Text = (f * c).ToString();
+            string cfare = res.ToString();
+            int f = int.Parse(cfare);
+            int c = int.Parse(fcount.SelectedValue);
+            fare.Text = (f * c).ToString();
+        }
+        else
+        {
+            fare.Text = "route not available!";
+        }
     }
    
 }
