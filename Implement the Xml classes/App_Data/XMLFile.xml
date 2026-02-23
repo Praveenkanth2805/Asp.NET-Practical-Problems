@@ -1,0 +1,20 @@
+﻿<Students>
+  <Student>
+    <RegNo>101</RegNo>
+    <Name>Praveenkanth</Name>
+    <Assignment1>Not Submitted</Assignment1>
+    <Assignment2>Not Submitted</Assignment2>
+  </Student>
+  <Student>
+    <RegNo>102</RegNo>
+    <Name>Arun</Name>
+    <Assignment1>Submitted</Assignment1>
+    <Assignment2>Not Submitted</Assignment2>
+  </Student>
+  <Student>
+    <RegNo>103</RegNo>
+    <Name>Siva</Name>
+    <Assignment1>Submitted</Assignment1>
+    <Assignment2>Submitted</Assignment2>
+  </Student>
+</Students>
